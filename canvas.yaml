@@ -1,0 +1,10 @@
+preset: package
+
+namespace: NovaKit
+
+paths:
+  src: src
+  resource: resources
+
+testing:
+  namespace: NovaKit\Tests

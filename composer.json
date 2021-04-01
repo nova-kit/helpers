@@ -1,0 +1,25 @@
+{
+    "name": "nova-kit/helpers",
+    "description": "Useful helpers for Laravel Nova",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mior Muhammad Zaki",
+            "email": "crynobone@gmail.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "require": {
+        "php": "^7.3 || ^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.16",
+        "orchestra/canvas": "^6.1"
+    },
+    "minimum-stability": "dev"
+}
