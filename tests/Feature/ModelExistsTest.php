@@ -7,6 +7,9 @@ use function NovaKit\model_exists;
 use Orchestra\Testbench\Factories\UserFactory;
 use Orchestra\Testbench\TestCase;
 
+/**
+ * @testdox NovaKit\model_exists() tests.
+ */
 class ModelExistsTest extends TestCase
 {
     /**
