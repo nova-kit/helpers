@@ -3,8 +3,8 @@
 namespace NovaKit\Tests\Feature;
 
 use Illuminate\Foundation\Auth\User;
-use Orchestra\Testbench\TestCase;
 use function NovaKit\table_name;
+use Orchestra\Testbench\TestCase;
 
 /**
  * @testdox NovaKit\table_name() unit tests

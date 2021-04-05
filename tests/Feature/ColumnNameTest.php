@@ -3,8 +3,8 @@
 namespace NovaKit\Tests\Feature;
 
 use Illuminate\Foundation\Auth\User;
-use Orchestra\Testbench\TestCase;
 use function NovaKit\column_name;
+use Orchestra\Testbench\TestCase;
 
 /**
  * @testdox NovaKit\column_name() tests

@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use InvalidArgumentException;
 use Laravel\Nova\Http\Requests\ActionRequest;
 
-
 /**
  * Get qualify column name from Eloquent model.
  *
@@ -17,12 +16,12 @@ use Laravel\Nova\Http\Requests\ActionRequest;
  */
 function column_name($model, string $attribute): string
 {
-    if (is_string($model)) {
+    if (\is_string($model)) {
         $model = new $model();
     }
 
     if (! $model instanceof Model) {
-        throw new InvalidArgumentException(sprintf('Given $model is not an instance of [%s].', Model::class));
+        throw new InvalidArgumentException(\sprintf('Given $model is not an instance of [%s].', Model::class));
     }
 
     return $model->qualifyColumn($attribute);
@@ -55,12 +54,12 @@ function running_action(Request $request): bool
  */
 function table_name($model): string
 {
-    if (is_string($model)) {
+    if (\is_string($model)) {
         $model = new $model();
     }
 
     if (! $model instanceof Model) {
-        throw new InvalidArgumentException(sprintf('Given $model is not an instance of [%s].', Model::class));
+        throw new InvalidArgumentException(\sprintf('Given $model is not an instance of [%s].', Model::class));
     }
 
     return $model->getTable();
@@ -73,5 +72,5 @@ function table_name($model): string
  */
 function schemaless_url($url): string
 {
-     return ltrim(str_replace(['https://', 'http://'], '//', url($url)), '/');
+    return \ltrim(\str_replace(['https://', 'http://'], '//', \url($url)), '/');
 }
