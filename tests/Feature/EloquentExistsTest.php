@@ -3,14 +3,14 @@
 namespace NovaKit\Tests\Feature;
 
 use Illuminate\Foundation\Auth\User;
-use function NovaKit\model_exists;
+use function NovaKit\eloquent_exists;
 use Orchestra\Testbench\Factories\UserFactory;
 use Orchestra\Testbench\TestCase;
 
 /**
- * @testdox NovaKit\model_exists() tests.
+ * @testdox NovaKit\eloquent_exists() tests.
  */
-class ModelExistsTest extends TestCase
+class EloquentExistsTest extends TestCase
 {
     /**
      * Define database migrations.
@@ -29,7 +29,7 @@ class ModelExistsTest extends TestCase
     {
         $user = UserFactory::new()->create();
 
-        $this->assertTrue(model_exists($user));
+        $this->assertTrue(eloquent_exists($user));
     }
 
     /**
@@ -39,6 +39,6 @@ class ModelExistsTest extends TestCase
     {
         $user = new User();
 
-        $this->assertFalse(model_exists($user));
+        $this->assertFalse(eloquent_exists($user));
     }
 }
