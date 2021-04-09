@@ -21,7 +21,7 @@ composer require "nova-kit/helpers"
 
 ### Eloquent
 
-#### Get Qualify Column Name
+#### Get Qualified Column Name
 
 ```php
 new NovaKit\column_name(string|\Illuminate\Database\Eloquent\Model $model, string $attribute): string;
