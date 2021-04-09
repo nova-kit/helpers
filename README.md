@@ -1,5 +1,4 @@
 Useful helpers for Laravel Nova
-
 ==============
 
 [![tests](https://github.com/nova-kit/helpers/workflows/tests/badge.svg?branch=master)](https://github.com/nova-kit/helpers/actions?query=workflow%3Atests+branch%3Amaster)
@@ -8,3 +7,14 @@ Useful helpers for Laravel Nova
 [![Latest Unstable Version](https://poser.pugx.org/nova-kit/helpers/v/unstable)](https://packagist.org/packages/nova-kit/helpers)
 [![License](https://poser.pugx.org/nova-kit/helpers/license)](https://packagist.org/packages/nova-kit/helpers)
 [![Coverage Status](https://coveralls.io/repos/github/nova-kit/helpers/badge.svg?branch=master)](https://coveralls.io/github/nova-kit/helpers?branch=master)
+
+
+## Installation
+
+To install through composer, run the following command from terminal:
+
+```bash
+composer require "nova-kit/helpers"
+```
+
+## Usages
