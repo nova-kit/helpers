@@ -38,6 +38,23 @@ function eloquent_exists($model): bool
 }
 
 /**
+ * Convert large id higher than Number.MAX_SAFE_INTEGER to string.
+ *
+ * https://stackoverflow.com/questions/47188449/json-max-int-number/47188576
+ *
+ * @param  mixed  $value
+ * @return mixed
+ */
+function id($value)
+{
+    if (is_int($value) && $value >= 9007199254740991) {
+        return (string) $value;
+    }
+
+    return $value;
+}
+
+/**
  * Determine running action request.
  */
 function running_action(Request $request): bool
