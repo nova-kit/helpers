@@ -45,7 +45,7 @@ function eloquent_exists($model): bool
  * @param  mixed  $value
  * @return mixed
  */
-function id($value)
+function safe_int($value)
 {
     if (is_int($value) && $value >= 9007199254740991) {
         return (string) $value;

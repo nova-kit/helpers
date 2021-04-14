@@ -2,10 +2,10 @@
 
 namespace NovaKit\Tests\Feature;
 
-use function NovaKit\id;
+use function NovaKit\safe_int;
 use Orchestra\Testbench\TestCase;
 
-class IdTest extends TestCase
+class SafeIntTest extends TestCase
 {
     /**
      * @test
@@ -13,7 +13,7 @@ class IdTest extends TestCase
      */
     public function it_can_cast_ids($given, $expected)
     {
-        $this->assertSame($expected, id($given));
+        $this->assertSame($expected, safe_int($given));
     }
 
     public function castIdsDataProvider()
