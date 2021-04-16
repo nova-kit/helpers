@@ -9,17 +9,18 @@ class SafeIntTest extends TestCase
 {
     /**
      * @test
-     * @dataProvider castIdsDataProvider
+     * @dataProvider castSafeIntDataProvider
      */
-    public function it_can_cast_ids($given, $expected)
+    public function it_can_cast_safe_int($given, $expected)
     {
         $this->assertSame($expected, safe_int($given));
     }
 
-    public function castIdsDataProvider()
+    public function castSafeIntDataProvider()
     {
         yield [1, 1];
         yield ['foo', 'foo'];
         yield [9007199254741001, '9007199254741001'];
+        yield [-9007199254741001, '-9007199254741001'];
     }
 }

@@ -73,15 +73,15 @@ function running_action(Request $request): bool
  *
  * @param  mixed  $value
  *
- * @return mixed
+ * @return int|string
  */
 function safe_int($value)
 {
-    if (is_int($value) && $value >= 9007199254740991) {
-        return (string) $value;
+    if (is_int($value) && abs($value) < 9007199254740991) {
+        return $value;
     }
 
-    return $value;
+    return (string) $value;
 }
 
 /**
