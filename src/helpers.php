@@ -44,7 +44,6 @@ function eloquent_exists($model): bool
  * Check if column name is valid.
  *
  * @param  mixed  $column
- * @return bool
  */
 function is_column_name($column): bool
 {
@@ -73,6 +72,7 @@ function running_action(Request $request): bool
  * https://stackoverflow.com/questions/47188449/json-max-int-number/47188576
  *
  * @param  mixed  $value
+ *
  * @return mixed
  */
 function safe_int($value)
