@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use InvalidArgumentException;
 use Laravel\Nova\Http\Requests\ActionRequest;
 
+const MAX_COLUMN_NAME_LENGTH = 64;
+const VALID_COLUMN_NAME_REGEX = '/^(?![0-9])[A-Za-z0-9_-]*$/';
+
 /**
  * Get qualify column name from Eloquent model.
  *
@@ -38,6 +41,33 @@ function eloquent_exists($model): bool
 }
 
 /**
+ * Check if column name is valid.
+ *
+ * @param  mixed  $column
+ * @return bool
+ */
+function is_column_name($column): bool
+{
+    if (empty($column) || \strlen($column) > MAX_COLUMN_NAME_LENGTH) {
+        return false;
+    }
+
+    if (! \preg_match(VALID_COLUMN_NAME_REGEX, $column)) {
+        return false;
+    }
+
+    return true;
+}
+
+/**
+ * Determine running action request.
+ */
+function running_action(Request $request): bool
+{
+    return $request instanceof ActionRequest;
+}
+
+/**
  * Convert large id higher than Number.MAX_SAFE_INTEGER to string.
  *
  * https://stackoverflow.com/questions/47188449/json-max-int-number/47188576
@@ -55,11 +85,13 @@ function safe_int($value)
 }
 
 /**
- * Determine running action request.
+ * Get schemaless URL.
+ *
+ * @param  string  $url
  */
-function running_action(Request $request): bool
+function schemaless_url($url): string
 {
-    return $request instanceof ActionRequest;
+    return \ltrim(\str_replace(['https://', 'http://'], '//', \url($url)), '/');
 }
 
 /**
@@ -80,14 +112,4 @@ function table_name($model): string
     }
 
     return $model->getTable();
-}
-
-/**
- * Get schemaless URL.
- *
- * @param  string  $url
- */
-function schemaless_url($url): string
-{
-    return \ltrim(\str_replace(['https://', 'http://'], '//', \url($url)), '/');
 }
