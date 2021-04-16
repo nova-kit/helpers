@@ -2,43 +2,8 @@
 
 namespace NovaKit;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
-use InvalidArgumentException;
-use Laravel\Nova\Http\Requests\ActionRequest;
-
 const MAX_COLUMN_NAME_LENGTH = 64;
 const VALID_COLUMN_NAME_REGEX = '/^(?![0-9])[A-Za-z0-9_-]*$/';
-
-/**
- * Get qualify column name from Eloquent model.
- *
- * @param  string|\Illuminate\Database\Eloquent\Model  $model
- *
- * @throws \InvalidArgumentException
- */
-function column_name($model, string $attribute): string
-{
-    if (\is_string($model)) {
-        $model = new $model();
-    }
-
-    if (! $model instanceof Model) {
-        throw new InvalidArgumentException(\sprintf('Given $model is not an instance of [%s].', Model::class));
-    }
-
-    return $model->qualifyColumn($attribute);
-}
-
-/**
- * Check whether given $model exists.
- *
- * @param  \Illuminate\Database\Eloquent\Model|mixed  $model
- */
-function eloquent_exists($model): bool
-{
-    return $model instanceof Model && $model->exists === true;
-}
 
 /**
  * Check if column name is valid.
@@ -56,14 +21,6 @@ function is_column_name($column): bool
     }
 
     return true;
-}
-
-/**
- * Determine running action request.
- */
-function running_action(Request $request): bool
-{
-    return $request instanceof ActionRequest;
 }
 
 /**
@@ -92,24 +49,4 @@ function safe_int($value)
 function schemaless_url($url): string
 {
     return \ltrim(\str_replace(['https://', 'http://'], '//', \url($url)), '/');
-}
-
-/**
- * Get table name from Eloquent model.
- *
- * @param  string|\Illuminate\Database\Eloquent\Model  $model
- *
- * @throws \InvalidArgumentException
- */
-function table_name($model): string
-{
-    if (\is_string($model)) {
-        $model = new $model();
-    }
-
-    if (! $model instanceof Model) {
-        throw new InvalidArgumentException(\sprintf('Given $model is not an instance of [%s].', Model::class));
-    }
-
-    return $model->getTable();
 }

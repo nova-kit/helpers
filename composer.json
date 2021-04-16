@@ -11,7 +11,7 @@
     ],
     "autoload": {
         "files": [
-            "src/helpers.php"
+            "src/functions.php"
         ]
     },
     "require": {
