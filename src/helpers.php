@@ -34,7 +34,7 @@ function is_column_name($column): bool
  */
 function safe_int($value)
 {
-    if (is_int($value) && abs($value) < 9007199254740991) {
+    if (\is_int($value) && \abs($value) < 9007199254740991) {
         return $value;
     }
 
