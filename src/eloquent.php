@@ -19,7 +19,7 @@ function column_name($model, string $attribute): string
     }
 
     if (! $model instanceof Model) {
-        throw new InvalidArgumentException(\sprintf('Given $model is not an instance of [%s].', Model::class));
+        throw new InvalidArgumentException(sprintf('Given $model is not an instance of [%s].', Model::class));
     }
 
     return $model->qualifyColumn($attribute);
@@ -49,9 +49,8 @@ function table_name($model): string
     }
 
     if (! $model instanceof Model) {
-        throw new InvalidArgumentException(\sprintf('Given $model is not an instance of [%s].', Model::class));
+        throw new InvalidArgumentException(sprintf('Given $model is not an instance of [%s].', Model::class));
     }
 
     return $model->getTable();
 }
-

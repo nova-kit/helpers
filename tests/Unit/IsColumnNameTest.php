@@ -34,7 +34,7 @@ class IsColumnNameTest extends TestCase
     {
         return [
             ['fullname'],
-            [\str_pad('email', 64, 'x')],
+            [str_pad('email', 64, 'x')],
         ];
     }
 
@@ -47,7 +47,7 @@ class IsColumnNameTest extends TestCase
     {
         return [
             ['email->"%27))%23injectedSQL'],
-            [\str_pad('email', 65, 'x')],
+            [str_pad('email', 65, 'x')],
             [''],
             [null],
         ];

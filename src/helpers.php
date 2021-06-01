@@ -16,7 +16,7 @@ function is_column_name($column): bool
         return false;
     }
 
-    if (! \preg_match(VALID_COLUMN_NAME_REGEX, $column)) {
+    if (! preg_match(VALID_COLUMN_NAME_REGEX, $column)) {
         return false;
     }
 
@@ -34,7 +34,7 @@ function is_column_name($column): bool
  */
 function safe_int($value)
 {
-    if (\is_int($value) && \abs($value) < 9007199254740991) {
+    if (\is_int($value) && abs($value) < 9007199254740991) {
         return $value;
     }
 
@@ -48,5 +48,5 @@ function safe_int($value)
  */
 function schemaless_url($url): string
 {
-    return \ltrim(\str_replace(['https://', 'http://'], '//', \url($url)), '/');
+    return ltrim(str_replace(['https://', 'http://'], '//', url($url)), '/');
 }
