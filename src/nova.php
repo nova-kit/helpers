@@ -8,10 +8,16 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 /**
  * Determine running action request.
+ *
+ * @param  string|null  $action
  */
-function running_action(Request $request): bool
+function running_action(Request $request, ?string $action = null): bool
 {
-    return $request instanceof ActionRequest;
+    if (! $request instanceof ActionRequest) {
+        return false;
+    }
+
+    return \is_null($action) ? true : $request->query('action') === $action;
 }
 
 /**
