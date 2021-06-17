@@ -24,38 +24,45 @@ composer require "nova-kit/helpers"
 #### Get Qualified Column Name
 
 ```php
-new NovaKit\column_name(string|\Illuminate\Database\Eloquent\Model $model, string $attribute): string;
+NovaKit\column_name(string|\Illuminate\Database\Eloquent\Model $model, string $attribute): string;
 ```
 
 The function generate qualified column name for an eloquent model:
 
 ```php
-return NovaKit\column_name(App\Models\User::class, 'email');
+use function NovaKit\column_name;
+
+return column_name(App\Models\User::class, 'email');
 ```
 
 #### Eloquent Exists
 
 ```php
-new NovaKit\eloquent_exists(\Illuminate\Database\Eloquent\Model|mixed $model): bool;
+NovaKit\eloquent_exists(\Illuminate\Database\Eloquent\Model|mixed $model): bool;
 ```
 
 The function checks if given `$model` is an instance of `Illuminate\Database\Eloquent\Model` and it exists in the database:
 
 
 ```php
-$user = App\Models\User::find(5);
+use App\Models\User;
+use function NovaKit\eloquent_exists;
 
-return NovaKit\eloquent_exists($user);
+$user = User::find(5);
+
+return eloquent_exists($user);
 ```
 
 #### Get Table Name
 
 ```php
-new NovaKit\table_name(string|\Illuminate\Database\Eloquent\Model $model): string;
+NovaKit\table_name(string|\Illuminate\Database\Eloquent\Model $model): string;
 ```
 
 The function generate table name for an eloquent model:
 
 ```php
-return NovaKit\table_name(App\Models\User::class);
+use function NovaKit\table_name;
+
+return table_name(App\Models\User::class);
 ```
