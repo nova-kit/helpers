@@ -53,6 +53,25 @@ $user = User::find(5);
 return eloquent_exists($user);
 ```
 
+#### Observe Eloquent
+
+```php
+NovaKit\observe_eloquent(string $model, string|object $observer): void;
+```
+
+The function will register observer for given `$model` class name and flush the requirements before handling next request on Laravel Octane.
+
+```php
+use App\Models\User;
+use App\Observers\UserObserver;
+use Laravel\Nova\Nova;
+use function NovaKit\observe_eloquent;
+
+Nova::serving(function () {
+    observe_eloquent(User::class, new UserObserver());
+});
+```
+
 #### Get Table Name
 
 ```php
@@ -66,3 +85,48 @@ use function NovaKit\table_name;
 
 return table_name(App\Models\User::class);
 ```
+
+### Common Helpers
+
+#### Validate Column Name
+
+```php
+NovaKit\is_column_name(mixed $column): bool;
+```
+
+Validate if given `$column` is a valid column name.
+
+```php
+use function NovaKit\is_column_name;
+
+if (is_column_name($request->query('sortBy'))) {
+    $query->latest($request->query('sortBy'));
+}
+```
+
+#### Safe Integer
+
+```php
+NovaKit\safe_int(mixed $value): int|string;
+```
+
+Convert large id higher than JavaScript's `Number.MAX_SAFE_INTEGER` to string.
+
+```php
+use function NovaKit\safe_int;
+
+return safe_int(9007199254741001); // will return "9007199254741001"
+```
+
+#### Schemaless URL
+
+```php
+NovaKit\schemaless_url(string $url): string;
+```
+
+Get schemaless URL for given `$url`
+
+```php
+use function NovaKit\schemaless_url;
+
+return schemaless_url('https://github.com'); // will return "github.com"
