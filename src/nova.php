@@ -39,7 +39,7 @@ function request_attachable_resource(NovaRequest $request, string $resource, $de
 }
 
 /**
- * Determine running action request.
+ * Determine NovaRequest is currently Running an Action Request.
  */
 function running_action(Request $request, ?string $action = null): bool
 {

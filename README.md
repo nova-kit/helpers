@@ -114,6 +114,8 @@ public static function indexQuery(NovaRequest $request, $query)
 NovaKit\running_action(\Illuminate\Http\Request $request, ?string $action): bool;
 ```
 
+Determine NovaRequest is currently Running an Action Request.
+
 ```php
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
