@@ -3,7 +3,9 @@
 namespace NovaKit;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Event;
 use InvalidArgumentException;
+use Laravel\Octane\Events\RequestReceived;
 
 /**
  * Get qualify column name from Eloquent model.
@@ -33,6 +35,22 @@ function column_name($model, string $attribute): string
 function eloquent_exists($model): bool
 {
     return $model instanceof Model && $model->exists === true;
+}
+
+/**
+ * Observe modal only for the current request.
+ *
+ * @param  string  $model
+ * @param  string|object  $observer
+ */
+function observe_eloquent($model, $observer): void
+{
+    $model::observe($observer);
+
+    Event::listen(RequestReceived::class, function () use ($model) {
+        $model::clearBootedModels();
+        $model::flushEventListeners();
+    });
 }
 
 /**
