@@ -86,6 +86,48 @@ use function NovaKit\table_name;
 return table_name(App\Models\User::class);
 ```
 
+### Nova Request Helpers
+
+#### Has Ordering
+
+```php
+NovaKit\has_ordering(\Laravel\Nova\Http\Requests\NovaRequest $request): bool;
+```
+
+Determine if current Request has any ordering.
+
+```php
+use Laravel\Nova\Http\Requests\NovaRequest;
+use function NovaKit\has_ordering;
+
+public static function indexQuery(NovaRequest $request, $query)
+{
+    if (! has_ordering($request)) {
+        $query->orderBy('name');
+    }
+}
+```
+
+#### Running Action
+
+```php
+NovaKit\running_action(\Illuminate\Http\Request $request, ?string $action): bool;
+```
+
+```php
+use Illuminate\Http\Request;
+use Laravel\Nova\Http\Requests\NovaRequest;
+
+public function authorizedToUpdate(Request $request)
+{
+    if (running_action($request, 'open-on-platform')) {
+        return $request->user()->canModerateResources();
+    }
+
+    return $this->authorizedTo($request, 'update');
+}
+```
+
 ### Common Helpers
 
 #### Validate Column Name
