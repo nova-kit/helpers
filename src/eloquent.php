@@ -38,22 +38,6 @@ function eloquent_exists($model): bool
 }
 
 /**
- * Observe modal only for the current request.
- *
- * @param  string  $model
- * @param  string|object  $observer
- */
-function observe_eloquent($model, $observer): void
-{
-    $model::observe($observer);
-
-    Event::listen(RequestReceived::class, function () use ($model) {
-        $model::clearBootedModels();
-        $model::flushEventListeners();
-    });
-}
-
-/**
  * Get table name from Eloquent model.
  *
  * @param  string|\Illuminate\Database\Eloquent\Model  $model

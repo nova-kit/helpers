@@ -53,25 +53,6 @@ $user = User::find(5);
 return eloquent_exists($user);
 ```
 
-#### Observe Eloquent
-
-```php
-NovaKit\observe_eloquent(string $model, string|object $observer): void;
-```
-
-The function will register observer for given `$model` class name and flush the requirements before handling next request on Laravel Octane.
-
-```php
-use App\Models\User;
-use App\Observers\UserObserver;
-use Laravel\Nova\Nova;
-use function NovaKit\observe_eloquent;
-
-Nova::serving(function () {
-    observe_eloquent(User::class, new UserObserver());
-});
-```
-
 #### Get Table Name
 
 ```php
