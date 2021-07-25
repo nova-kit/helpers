@@ -3,9 +3,7 @@
 namespace NovaKit;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Event;
 use InvalidArgumentException;
-use Laravel\Octane\Events\RequestReceived;
 
 /**
  * Get qualify column name from Eloquent model.
