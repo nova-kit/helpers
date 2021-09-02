@@ -54,3 +54,15 @@ function table_name($model): string
 
     return $model->getTable();
 }
+
+/**
+ * Get user model from configured guard driver.
+ */
+function user_model(string $driver = 'auth.defaults.guard'): string
+{
+    $guard = config($driver);
+
+    return with(config("auth.guards.{$guard}.provider"), function ($provider) {
+        return config("auth.providers.{$provider}.model");
+    });
+}
