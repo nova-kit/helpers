@@ -8,7 +8,7 @@ use InvalidArgumentException;
 /**
  * Get qualify column name from Eloquent model.
  *
- * @param  string|\Illuminate\Database\Eloquent\Model  $model
+ * @param  class-string<\Illuminate\Database\Eloquent\Model>|\Illuminate\Database\Eloquent\Model  $model
  *
  * @throws \InvalidArgumentException
  */
@@ -38,7 +38,7 @@ function eloquent_exists($model): bool
 /**
  * Get table name from Eloquent model.
  *
- * @param  string|\Illuminate\Database\Eloquent\Model  $model
+ * @param  class-string<\Illuminate\Database\Eloquent\Model>|\Illuminate\Database\Eloquent\Model  $model
  *
  * @throws \InvalidArgumentException
  */
