@@ -19,7 +19,8 @@
     },
     "require-dev": {
         "orchestra/testbench": "^6.16",
-        "orchestra/canvas": "^6.1"
+        "orchestra/canvas": "^6.1",
+        "phpstan/phpstan": "^1.0.1"
     },
     "minimum-stability": "dev"
 }
