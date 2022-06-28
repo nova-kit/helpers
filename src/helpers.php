@@ -2,6 +2,8 @@
 
 namespace NovaKit;
 
+use Illuminate\Support\Str;
+
 const MAX_COLUMN_NAME_LENGTH = 64;
 const VALID_COLUMN_NAME_REGEX = '/^(?![0-9])[A-Za-z0-9_-]*$/';
 
@@ -21,6 +23,29 @@ function is_column_name($column): bool
     }
 
     return true;
+}
+
+/**
+ * Check if locale should be RTL.
+ */
+function is_rtl(): bool
+{
+    return Str::startsWith(app()->currentLocale(), [
+        'ar',     // Arabic
+        'arc',    // Aramaic
+        'ckb',    // Kurdish (Sorani)
+        'dv',     // Divehi
+        'fa',     // Persian
+        'ha',     // Hausa
+        'he',     // Hebrew
+        'khw',    // Khowar
+        'ks',     // Kashmiri
+        'ps',     // Pashto
+        'sd',     // Sindhi
+        'ur',     // Urdu
+        'uz_AF',  // Uzbeki Afghanistan
+        'yi',     // Yiddish
+    ]);
 }
 
 /**
