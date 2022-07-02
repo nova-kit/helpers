@@ -11,7 +11,7 @@ function color(string $foreground, string $background): string
 {
     $palletes = ['light' => '255, 255, 255', 'dark' => '12, 74, 110'];
 
-    $background = Arr::get($palletes, $background, $background);
+    $background = $palletes[$background] ?? $background;
 
     $rgba = function ($color) {
         return tap(
