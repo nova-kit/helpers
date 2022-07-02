@@ -3,8 +3,43 @@
 namespace NovaKit;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Laravel\Nova\Http\Requests\ActionRequest;
 use Laravel\Nova\Http\Requests\NovaRequest;
+
+function color(string $foreground, string $background): string
+{
+    $palletes = ['light' => '255, 255, 255', 'dark' => '12, 74, 110'];
+
+    $background = Arr::get($palletes, $background, $background);
+
+    $rgba = function ($color) {
+        return tap(
+            array_map(function ($value) {
+                return (float) $value;
+            }, explode(',', str_replace(' ', '', $color))),
+            function (&$color) {
+                if (count($color) === 3) {
+                    $color[] = 1;
+                }
+            }
+        );
+    };
+
+    [$fR, $fG, $fB, $alpha] = $rgba($foreground);
+
+    if ((float) $alpha >= 1.0) {
+        return "{$fR}, {$fG}, {$fB}";
+    }
+
+    [$bR, $bG, $bB] = $rgba($background);
+
+    $convert = function ($foreground, $background) use ($alpha) {
+        return round(((1 - (float) $alpha) * (int) $background) + ((float) $alpha * (int) $foreground));
+    };
+
+    return "{$convert($fR, $bR)}, {$convert($fG, $bG)}, {$convert($fB, $bB)}";
+}
 
 /**
  * Determine Resource ID from the request.
