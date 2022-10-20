@@ -33,7 +33,8 @@ class ColumnNameTest extends TestCase
         $this->expectException('InvalidArgumentException');
         $this->expectExceptionMessage('Given $model is not an instance of [Illuminate\Database\Eloquent\Model].');
 
-        $column = column_name(new class() {
+        $column = column_name(new class()
+        {
         }, 'email');
     }
 }

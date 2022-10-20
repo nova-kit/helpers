@@ -33,7 +33,8 @@ class TableNameTest extends TestCase
         $this->expectException('InvalidArgumentException');
         $this->expectExceptionMessage('Given $model is not an instance of [Illuminate\Database\Eloquent\Model].');
 
-        $table = table_name(new class() {
+        $table = table_name(new class()
+        {
         });
     }
 }

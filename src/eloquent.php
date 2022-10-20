@@ -55,6 +55,15 @@ function table_name($model): string
     return $model->getTable();
 }
 
+function safe_key(?Model $model)
+{
+    if (\is_null($model)) {
+        return null;
+    }
+
+    return \isset($model->{$model->getKeyName()}) ? $model->getKey() : null;
+}
+
 /**
  * Get user model from configured guard driver.
  */

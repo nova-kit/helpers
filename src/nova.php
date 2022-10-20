@@ -3,7 +3,6 @@
 namespace NovaKit;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Laravel\Nova\Http\Requests\ActionRequest;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -45,7 +44,6 @@ function color(string $foreground, string $background): string
  * Determine Resource ID from the request.
  *
  * @param  callable|null  $default
- *
  * @return int|string|null
  */
 function request_resource(NovaRequest $request, string $resource, $default = null)
@@ -61,7 +59,6 @@ function request_resource(NovaRequest $request, string $resource, $default = nul
  * Determine attachable Resource ID from the request.
  *
  * @param  callable|null  $default
- *
  * @return int|string|null
  */
 function request_attachable_resource(NovaRequest $request, string $resource, $default = null)

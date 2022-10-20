@@ -2,7 +2,6 @@
 
 namespace NovaKit\Tests\Feature;
 
-use Illuminate\Foundation\Auth\User;
 use function NovaKit\is_rtl;
 use Orchestra\Testbench\TestCase;
 
