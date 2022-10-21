@@ -35,6 +35,7 @@ class TableNameTest extends TestCase
 
         $table = table_name(new class()
         {
+            //
         });
     }
 }

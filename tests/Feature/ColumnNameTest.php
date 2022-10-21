@@ -35,6 +35,7 @@ class ColumnNameTest extends TestCase
 
         $column = column_name(new class()
         {
+            //
         }, 'email');
     }
 }
