@@ -67,7 +67,7 @@ function safe_key(?Model $model)
         return null;
     }
 
-    return \isset($model->{$model->getKeyName()}) ? $model->getKey() : null;
+    return isset($model->{$model->getKeyName()}) ? $model->getKey() : null;
 }
 
 /**
