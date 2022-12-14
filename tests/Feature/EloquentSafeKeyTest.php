@@ -3,10 +3,13 @@
 namespace NovaKit\Tests\Feature;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use function NovaKit\safe_key;
 use Orchestra\Testbench\Factories\UserFactory;
 use Orchestra\Testbench\TestCase;
-use function NovaKit\safe_key;
 
+/**
+ * @testdox NovaKit\safe_key() tests.
+ */
 class EloquentSafeKeyTest extends TestCase
 {
     /**
