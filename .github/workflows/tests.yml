@@ -7,6 +7,51 @@ on:
     - cron: '0 0 * * 3'
 
 jobs:
+  tests-on-laravel-10:
+    runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      matrix:
+        os:
+          - "ubuntu-latest"
+          - "windows-latest"
+        php:
+          - 8.1
+          - 8.2
+        dependencies:
+          - "highest"
+          - "lowest"
+        laravel:
+          - "10.x"
+        experimental:
+          - false
+
+    name: Laravel ${{ matrix.laravel }} on PHP${{ matrix.php }}-${{ matrix.os }} (${{ matrix.dependencies }})
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, sqlite3, pdo_sqlite, bcmath, fileinfo
+          coverage: none
+
+      - name: Install Laravel Framework ${{ matrix.laravel }}
+        run: |
+          composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
+
+      - name: Install dependencies
+        uses: "ramsey/composer-install@v2"
+        with:
+          dependency-versions: "${{ matrix.dependencies }}"
+          composer-options: "--prefer-dist --no-cache"
+
+      - name: Execute tests
+        run: vendor/bin/phpunit
+
   tests-on-laravel-9:
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental }}
@@ -16,9 +61,9 @@ jobs:
           - "ubuntu-latest"
           - "windows-latest"
         php:
-          - "8.0"
-          - "8.1"
-          - "8.2"
+          - '8.0'
+          - 8.1
+          - 8.2
         dependencies:
           - "highest"
           - "lowest"
@@ -62,10 +107,10 @@ jobs:
           - "ubuntu-latest"
           - "windows-latest"
         php:
-          - "7.3"
-          - "7.4"
-          - "8.0"
-          - "8.1"
+          - 7.3
+          - 7.4
+          - '8.0'
+          - 8.1
         dependencies:
           - "highest"
           - "lowest"
