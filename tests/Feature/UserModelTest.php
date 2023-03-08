@@ -2,9 +2,7 @@
 
 namespace NovaKit\Tests\Feature;
 
-use Illuminate\Foundation\Auth\User;
 use function NovaKit\user_model;
-use Orchestra\Testbench\Factories\UserFactory;
 use Orchestra\Testbench\TestCase;
 
 /**

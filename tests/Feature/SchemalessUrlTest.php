@@ -9,6 +9,7 @@ class SchemalessUrlTest extends TestCase
 {
     /**
      * @test
+     *
      * @dataProvider castSchemalessUrlDataProvider
      */
     public function it_can_cast_schemaless_url($given, $expected)

@@ -9,6 +9,7 @@ class SafeIntTest extends TestCase
 {
     /**
      * @test
+     *
      * @dataProvider castSafeIntDataProvider
      */
     public function it_can_cast_safe_int($given, $expected)

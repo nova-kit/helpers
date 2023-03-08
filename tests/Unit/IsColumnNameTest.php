@@ -9,6 +9,7 @@ class IsColumnNameTest extends TestCase
 {
     /**
      * @test
+     *
      * @dataProvider validColumnNameDataProvider
      */
     public function it_can_validate_column_name($given)
@@ -18,6 +19,7 @@ class IsColumnNameTest extends TestCase
 
     /**
      * @test
+     *
      * @dataProvider invalidColumnNameDataProvider
      */
     public function it_cant_validate_invalid_column_name($given)

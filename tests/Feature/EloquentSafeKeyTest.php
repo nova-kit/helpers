@@ -36,7 +36,7 @@ class EloquentSafeKeyTest extends TestCase
         $this->assertNull(safe_key(new Pivot));
     }
 
-     /** @test */
+    /** @test */
     public function it_returns_null_when_given_null()
     {
         $this->assertNull(safe_key(null));

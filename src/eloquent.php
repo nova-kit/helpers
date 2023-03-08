@@ -57,8 +57,7 @@ function table_name($model): string
 
 /**
  * Get the primary key value from Eloquent model.
- * 
- * @param  \Illuminate\Database\Eloquent\Model|null  $model
+ *
  * @return int|string|null
  */
 function safe_key(?Model $model)

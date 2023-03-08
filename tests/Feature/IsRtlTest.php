@@ -12,6 +12,7 @@ class IsRtlTest extends TestCase
 {
     /**
      * @test
+     *
      * @dataProvider localeDataProvider
      */
     public function it_can_detect_locale($locale, $direction)
