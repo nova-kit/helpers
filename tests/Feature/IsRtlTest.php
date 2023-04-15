@@ -22,7 +22,7 @@ class IsRtlTest extends TestCase
         $this->assertSame($direction, is_rtl() ? 'rtl' : 'ltr');
     }
 
-    public function localeDataProvider()
+    public static function localeDataProvider()
     {
         yield ['en', 'ltr'];
         yield ['ms', 'ltr'];

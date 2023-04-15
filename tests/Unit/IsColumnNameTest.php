@@ -32,12 +32,10 @@ class IsColumnNameTest extends TestCase
      *
      * @return array
      */
-    public function validColumnNameDataProvider()
+    public static function validColumnNameDataProvider()
     {
-        return [
-            ['fullname'],
-            [str_pad('email', 64, 'x')],
-        ];
+        yield ['fullname'];
+        yield [str_pad('email', 64, 'x')];
     }
 
     /**
@@ -45,13 +43,11 @@ class IsColumnNameTest extends TestCase
      *
      * @return array
      */
-    public function invalidColumnNameDataProvider()
+    public static function invalidColumnNameDataProvider()
     {
-        return [
-            ['email->"%27))%23injectedSQL'],
-            [str_pad('email', 65, 'x')],
-            [''],
-            [null],
-        ];
+        yield ['email->"%27))%23injectedSQL'];
+        yield [str_pad('email', 65, 'x')];
+        yield [''];
+        yield [null];
     }
 }

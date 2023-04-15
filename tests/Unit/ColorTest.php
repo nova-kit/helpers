@@ -15,7 +15,7 @@ class UtilTest extends TestCase
         $this->assertSame($expected, color($foreground, $background));
     }
 
-    public function colorDataProvider()
+    public static function colorDataProvider()
     {
         yield ['24, 182, 155', 'light', '24, 182, 155'];
         yield ['24, 182, 155', 'dark', '24, 182, 155'];

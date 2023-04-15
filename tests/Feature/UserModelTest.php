@@ -2,6 +2,7 @@
 
 namespace NovaKit\Tests\Feature;
 
+use Illuminate\Foundation\Auth\User;
 use function NovaKit\user_model;
 use Orchestra\Testbench\TestCase;
 
@@ -13,8 +14,6 @@ class UserModelTest extends TestCase
     /** @test */
     public function it_can_retrive_the_user_model()
     {
-        $this->assertSame(
-            'Illuminate\Foundation\Auth\User', user_model()
-        );
+        $this->assertSame(User::class, user_model());
     }
 }

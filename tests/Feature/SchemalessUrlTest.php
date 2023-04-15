@@ -17,7 +17,7 @@ class SchemalessUrlTest extends TestCase
         $this->assertSame($expected, schemaless_url($given));
     }
 
-    public function castSchemalessUrlDataProvider()
+    public static function castSchemalessUrlDataProvider()
     {
         yield ['https://nova.laravel.com/', 'nova.laravel.com/'];
         yield ['http://nova.laravel.com/', 'nova.laravel.com/'];

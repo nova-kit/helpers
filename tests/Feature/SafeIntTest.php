@@ -17,7 +17,7 @@ class SafeIntTest extends TestCase
         $this->assertSame($expected, safe_int($given));
     }
 
-    public function castIdsDataProvider()
+    public static function castIdsDataProvider()
     {
         yield [1, 1];
         yield ['foo', 'foo'];
