@@ -8,10 +8,6 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 /**
  * Convert RGBA color to RGB.
- *
- * @param  string  $foreground
- * @param  string  $background
- * @return string
  */
 function color(string $foreground, string $background): string
 {
