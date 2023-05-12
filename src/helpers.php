@@ -58,8 +58,12 @@ function is_rtl(): bool
  */
 function safe_int($value)
 {
-    if (\is_int($value) && abs($value) < 9007199254740991) {
+    $jsonMaxInt = 9007199254740991;
+
+    if (\is_int($value) && abs($value) < $jsonMaxInt) {
         return $value;
+    } elseif (filter_var($value, FILTER_VALIDATE_INT) && abs($value) < $jsonMaxInt) {
+        return (int) $value;
     }
 
     return (string) $value;
