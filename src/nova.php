@@ -78,7 +78,7 @@ function request_attachable_resource(NovaRequest $request, string $resource, $de
 /**
  * Determine NovaRequest is currently Running an Action Request.
  */
-function running_action(Request $request, ?string $action = null): bool
+function running_action(Request $request, string $action = null): bool
 {
     if (! $request instanceof ActionRequest) {
         return false;
