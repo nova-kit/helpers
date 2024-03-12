@@ -13,19 +13,19 @@ jobs:
         os:
           - "ubuntu-latest"
         php:
-          - 8.1
+          - 8.2
         dependencies:
           - "highest"
         laravel:
-          - "9.x"
+          - "11.x"
         experimental:
           - false
 
-    name: Laravel ${{ matrix.laravel }} on PHP${{ matrix.php }}-${{ matrix.os }} (${{ matrix.dependencies }})
+    name: Laravel:${{ matrix.laravel }} on PHP:${{ matrix.php }}-${{ matrix.os }} (${{ matrix.dependencies }})
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -34,15 +34,11 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pcntl, sqlite3, pdo_sqlite, bcmath, fileinfo
           coverage: xdebug
 
-      - name: Install Laravel Framework ${{ matrix.laravel }}
-        run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
-
       - name: Install dependencies
-        uses: "ramsey/composer-install@v2"
+        uses: "ramsey/composer-install@v3"
         with:
           dependency-versions: "${{ matrix.dependencies }}"
-          composer-options: "--prefer-dist"
+          composer-options: "--prefer-dist --with=laravel/framework:${{ matrix.laravel }}"
 
       - name: Execute tests
         run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
