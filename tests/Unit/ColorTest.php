@@ -5,7 +5,7 @@ namespace NovaKit\Tests\Unit;
 use function NovaKit\color;
 use PHPUnit\Framework\TestCase;
 
-class UtilTest extends TestCase
+class ColorTest extends TestCase
 {
     /**
      * @dataProvider colorDataProvider
